@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+
+{% block content %}
+
+
+<div class="min-h-screen flex items-center justify-center bg-black">
+  <div class="w-full max-w-md bg-gray-900 p-8 rounded-2xl shadow-xl">
+    
+    <h2 class="text-3xl font-semibold text-center text-white mb-8 mt-10">
+      Login to your account
+    </h2>
+
+    <!-- Display form errors if any -->
+    {% if form.non_field_errors %}
+      <div class="bg-red-500/10 border border-red-500 text-red-500 px-4 py-3 rounded-lg mb-6">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <form method="post" class="space-y-6">
+      {% csrf_token %}
+
+      <!-- Username Field -->
+      <div>
+        <label for="{{ form.username.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+          Username:
+        </label>
+        <input
+          type="text"
+          name="{{ form.username.name }}"
+          id="{{ form.username.id_for_label }}"
+          class="w-full h-10 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+          placeholder="Enter your username"
+          {% if form.username.value %}value="{{ form.username.value }}"{% endif %}
+          required
+        >
+        {% if form.username.errors %}
+          <p class="mt-2 text-sm text-red-500">{{ form.username.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-gray-300 mb-2">
+          Password:
+        </label>
+        <input
+          type="password"
+          name="{{ form.password.name }}"
+          id="{{ form.password.id_for_label }}"
+          class="w-full h-10 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-200"
+          placeholder="Enter your password"
+          required
+        >
+        {% if form.password.errors %}
+          <p class="mt-2 text-sm text-red-500">{{ form.password.errors.0 }}</p>
+        {% endif %}
+      </div>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 rounded-lg transition duration-200 transform hover:scale-[1.02] active:scale-[0.98]"
+      >
+        Login
+      </button>
+    </form>
+
+    <!-- Register Link -->
+    <p class="text-center text-gray-400 mt-6">
+      Don't have an account? 
+      <a href="{% url 'register' %}" class="text-blue-500 hover:text-blue-400 font-medium transition duration-200">
+        Register here
+      </a>
+    </p>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
