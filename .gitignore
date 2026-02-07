@@ -1,0 +1,49 @@
+# =====================
+# Python
+# =====================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+ENV/
+env/
+.env
+
+# =====================
+# Django
+# =====================
+# Database
+db.sqlite3
+
+# Django migrations (optional: keep them if you want)
+# *.pyc files
+*.pyc
+*.pyo
+
+# =====================
+# Media & static files (optional)
+# =====================
+# Ignore uploaded media files
+media/
+# Ignore static files collected by collectstatic
+staticfiles/
+
+# =====================
+# IDE / Editor
+# =====================
+# VS Code
+.vscode/
+
+# PyCharm / JetBrains
+.idea/
+
+# =====================
+# System files
+# =====================
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
