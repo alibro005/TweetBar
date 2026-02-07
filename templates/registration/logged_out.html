@@ -1,0 +1,21 @@
+{% extends "layout.html" %} 
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div class="min-h-screen flex items-center justify-center bg-black">
+  <div class="w-full max-w-md bg-gray-900 p-8 rounded-2xl shadow-xl h-[400px]">
+    <h2 class="text-2xl font-semibold text-center text-white mb-6 mt-10">
+      Logged out
+    </h2>
+
+    <p class="text-center text-gray-400 mt-4">
+      You have been logged out.
+      <a href="{% url 'login' %}" class="text-blue-500 hover:underline"
+        >Login here</a
+      >
+    </p>
+  </div>
+</div>
+
+{% endblock %}

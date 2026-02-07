@@ -60,7 +60,8 @@
           placeholder="Search..."
         />
       </div>
-      {% comment %} {% if not user.is_authenticated %}
+
+      {% if not user.is_authenticated %}
       <div class="hidden lg:block space-x-3">
         <button
           class="hover:bg-slate-300/20 transition px-6 py-2 border border-slate-400 rounded-md active:scale-95"
@@ -68,7 +69,7 @@
           <a href="{% url 'login' %}"> Login </a>
         </button>
       </div>
-      {% endif %} {% endcomment %}
+      {% endif %}
 
       <button class="lg:hidden active:scale-90 transition" id="menu-button">
         <svg
@@ -90,7 +91,7 @@
         </svg>
       </button>
 
-      {% comment %} {% if user.is_authenticated %}
+      {% if user.is_authenticated %}
       <div
         class="hidden lg:flex items-center text-white px-4 py-2 rounded-md space-x-4"
       >
@@ -106,7 +107,7 @@
           </button>
         </form>
       </div>
-      {% endif %} {% endcomment %}
+      {% endif %}
     </nav>
 
     <div
@@ -143,7 +144,6 @@
     <div class="container mx-auto py-10">
       {% block content %} hello {% endblock %}
     </div>
-    
   </body>
 
   <footer
@@ -211,7 +211,9 @@
     <p class="py-4 text-center border-t mt-6 border-slate-700">
       Copyright 2026 © <a href="#">Tweet Bar</a> All Right Reserved. Distributed
       by
-      <a href="https://themewagon.com/" target="_blank">Muhammad Ali Siddiqui</a>
+      <a href="https://themewagon.com/" target="_blank"
+        >Muhammad Ali Siddiqui</a
+      >
     </p>
   </footer>
 </html>
