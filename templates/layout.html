@@ -1,0 +1,217 @@
+{% load tailwind_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock %}</title>
+
+    {% tailwind_css %}
+  </head>
+  <body class="bg-black text-gray-300">
+    <nav
+      class="sticky top-0 z-50 flex items-center justify-between w-full h-18 px-6 md:px-16 lg:px-24 xl:px-32 backdrop-blur"
+    >
+      <a href="#!" class="flex items-center">
+        <img
+          class="h-9 w-auto"
+          width="138"
+          height="36"
+          alt="logo"
+          src="https://flowbite.com/docs/images/logo.svg"
+        />
+        <span
+          class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-6"
+          >TweetBar</span
+        >
+      </a>
+      <div class="hidden lg:flex items-center gap-8 transition duration-500">
+        <a href="/" class="hover:text-slate-300 transition"> Home </a>
+        <a href="#about" class="hover:text-slate-300 transition"> About </a>
+        <a href="/tweet/" class="hover:text-slate-300 transition"> Tweets </a>
+        <a href="#contact" class="hover:text-slate-300 transition"> Contact </a>
+      </div>
+
+      <div class="relative hidden md:block">
+        <div
+          class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+        >
+          <svg
+            class="w-4 h-4 text-gray-500 dark:text-gray-400"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 20 20"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+            />
+          </svg>
+          <span class="sr-only">Search icon</span>
+        </div>
+        <input
+          type="text"
+          id="search-navbar"
+          class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          placeholder="Search..."
+        />
+      </div>
+      {% comment %} {% if not user.is_authenticated %}
+      <div class="hidden lg:block space-x-3">
+        <button
+          class="hover:bg-slate-300/20 transition px-6 py-2 border border-slate-400 rounded-md active:scale-95"
+        >
+          <a href="{% url 'login' %}"> Login </a>
+        </button>
+      </div>
+      {% endif %} {% endcomment %}
+
+      <button class="lg:hidden active:scale-90 transition" id="menu-button">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-menu size-6.5"
+          aria-hidden="true"
+        >
+          <path d="M4 5h16"></path>
+          <path d="M4 12h16"></path>
+          <path d="M4 19h16"></path>
+        </svg>
+      </button>
+
+      {% comment %} {% if user.is_authenticated %}
+      <div
+        class="hidden lg:flex items-center text-white px-4 py-2 rounded-md space-x-4"
+      >
+        <span>@{{ user.username }}</span>
+
+        <form method="post" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button
+            type="submit"
+            class="bg-red-600 hover:bg-red-800 text-white font-semibold px-4 py-2 rounded-md transition"
+          >
+            Logout
+          </button>
+        </form>
+      </div>
+      {% endif %} {% endcomment %}
+    </nav>
+
+    <div
+      id="nav-links"
+      class="fixed inset-0 z-[100] bg-black/60 backdrop-blur flex flex-col items-center justify-center text-lg gap-8 lg:hidden transition-transform duration-400 -translate-x-full"
+    >
+      <a href="/#creations"> Creations </a>
+      <a href="/#about"> About </a>
+      <a href="/#testimonials"> Testimonials </a>
+      <a href="/#contact"> Contact </a>
+      <button
+        id="close-menu"
+        class="active:ring-3 active:ring-white aspect-square size-10 p-1 items-center justify-center bg-slate-100 hover:bg-slate-200 transition text-black rounded-md flex"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-x"
+          aria-hidden="true"
+        >
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div class="container mx-auto py-10">
+      {% block content %} hello {% endblock %}
+    </div>
+    
+  </body>
+
+  <footer
+    class="px-6 md:px-16 lg:px-24 xl:px-32 w-full text-sm text-slate-400 mt-40"
+  >
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <a href="#!" class="flex items-center">
+          <img
+            class="h-9 w-auto"
+            width="138"
+            height="36"
+            alt="logo"
+            src="https://flowbite.com/docs/images/logo.svg"
+          />
+          <span
+            class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white ml-6"
+            >TweetBar</span
+          >
+        </a>
+        <p class="text-sm/7 mt-6">
+          A mini social media app built with Django for learning and fun
+        </p>
+      </div>
+      <div class="flex flex-col lg:items-center lg:justify-center">
+        <div class="flex flex-col text-sm space-y-2.5">
+          <h2 class="font-semibold mb-5 text-white">Company</h2>
+          <a class="hover:text-slate-500 transition" href="#"> About us </a>
+          <a class="hover:text-slate-500 transition" href="#">
+            Careers
+            <span
+              class="text-xs text-white bg-indigo-600 rounded-md ml-2 px-2 py-1"
+              >We’re hiring!</span
+            >
+          </a>
+          <a class="hover:text-slate-500 transition" href="/tweet/">Tweets </a>
+          <a class="hover:text-slate-500 transition" href="#">
+            Privacy policy
+          </a>
+        </div>
+      </div>
+      <div>
+        <h2 class="font-semibold text-white mb-5">
+          Subscribe to our newsletter
+        </h2>
+        <div class="text-sm space-y-6 max-w-sm">
+          <p>
+            The latest news, articles, and resources, sent to your inbox weekly.
+          </p>
+          <div
+            class="flex items-center justify-center gap-2 p-2 rounded-md bg-slate-900"
+          >
+            <input
+              class="outline-none w-full max-w-64 py-2 rounded px-2"
+              placeholder="Enter your email"
+              type="email"
+            />
+            <button class="bg-indigo-600 px-4 py-2 text-white rounded">
+              Subscribe
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="py-4 text-center border-t mt-6 border-slate-700">
+      Copyright 2026 © <a href="#">Tweet Bar</a> All Right Reserved. Distributed
+      by
+      <a href="https://themewagon.com/" target="_blank">Muhammad Ali Siddiqui</a>
+    </p>
+  </footer>
+</html>
