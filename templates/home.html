@@ -38,11 +38,11 @@ TweetBar
                     <path d="m12 5 7 7-7 7"></path>
                 </svg>
             </button>
+            <a href="{% url 'login' %}">
             <button class="border border-slate-400 active:scale-95 hover:bg-white/10 transition rounded-lg px-8 h-11">
-                <a href="{% url 'login' %}"> 
                     Login
-                </a>
             </button>
+            </a>
         </div>
         <figure class="relative w-full h-full [perspective:800px] mt-16 max-w-4xl mx-auto flex flex-col items-center justify-center">
             <div class="relative [transform-style:preserve-3d] w-full max-w-4xl">
@@ -51,7 +51,7 @@ TweetBar
         </figure>
     </section>
 
-{% comment %} About  {% endcomment %}
+    <!--- about section --->
 
     <section class="flex flex-col items-center" id="about">
         <div class="flex flex-col items-center mt-32">
@@ -92,6 +92,7 @@ TweetBar
             </div>
         </div>
     </section>
+    
     <!-- Subscribe Section -->
     <section class="flex flex-col items-center">
         <div class="flex flex-col items-center mt-32">
