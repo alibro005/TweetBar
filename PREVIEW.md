@@ -11,6 +11,12 @@ This file provides a visual overview of the **TweetBar** Django application.
 
 ---
 
+
+![Tweet Page](screenshots/tweet.png)
+*The is the Tweet page of tweetbar.*
+
+---
+
 ## 2. User Authentication
 
 ### Login Page
