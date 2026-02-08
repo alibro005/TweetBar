@@ -44,5 +44,3 @@ This file provides a visual overview of the **TweetBar** Django application.
 
 ---
 
-
-**This file is linked in README.md and INSTALLATION.md for easy access to visual references.**
