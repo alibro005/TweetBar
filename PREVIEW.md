@@ -4,7 +4,7 @@ This file provides a visual overview of the **TweetBar** Django application.
 
 ---
 
-## 1. Home / Timeline
+## 1. Home
 
 ![Home Page](screenshots/home.png)  
 *The is the main page of tweet bar.*
