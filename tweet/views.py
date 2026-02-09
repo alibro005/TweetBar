@@ -8,14 +8,9 @@ from django.contrib.auth import login
 # Create your views here.
 
 
-def index(request):
-    return render(request, "index.html")
-
-
 def tweet_list(request):
     tweets = Tweet.objects.all().order_by("-created_at")
     return render(request, "tweet_list.html", {"tweets": tweets})
-
 
 @login_required
 def tweet_create(request):
