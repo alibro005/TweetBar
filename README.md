@@ -1,4 +1,4 @@
-# TweetBar
+#  <img src="https://flowbite.com/docs/images/logo.svg" width="30px"> TweetBar
 
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue) 
 ![Django](https://img.shields.io/badge/django-4.2-green) 
